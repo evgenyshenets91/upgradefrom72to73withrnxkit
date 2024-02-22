@@ -1,4 +1,5 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli) with version 0.72 and updated to 0.73v with `React Native Upgrade Helper` and `rnx-kit` just for testing purpuses.
+
 
 # Getting Started
 
