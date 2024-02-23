@@ -1,4 +1,5 @@
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli) with version 0.72 and updated to 0.73v with `React Native Upgrade Helper` and `rnx-kit` just for testing purpuses.
+Replaced default `metro config` with `rnx-kit/metro-config`
 
 
 # Getting Started
@@ -13,10 +14,10 @@ To start Metro, run the following command from the _root_ of your React Native p
 
 ```bash
 # using npm
-npm start
+npm react-native rnx-start
 
 # OR using Yarn
-yarn start
+yarn react-native rnx-start
 ```
 
 ## Step 2: Start your Application
@@ -41,6 +42,26 @@ npm run ios
 
 # OR using Yarn
 yarn ios
+```
+
+### For creating bundle
+
+```bash
+# using npm
+npm run bundle:android
+
+# OR using Yarn
+yarn bundle:android
+```
+
+### For iOS
+
+```bash
+# using npm
+npm run bundle:ios
+
+# OR using Yarn
+yarn bundle:ios
 ```
 
 If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
