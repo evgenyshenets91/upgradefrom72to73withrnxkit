@@ -1,11 +1,29 @@
-const {getDefaultConfig, mergeConfig} = require('@react-native/metro-config');
+const {
+  makeMetroConfig,
+  exclusionList,
+  resolveUniqueModule,
+} = require('@rnx-kit/metro-config');
+const MetroSymlinksResolver = require('@rnx-kit/metro-resolver-symlinks');
+const {TypeScriptPlugin} = require('@rnx-kit/metro-plugin-typescript');
+const {
+  DuplicateDependencies,
+} = require('@rnx-kit/metro-plugin-duplicates-checker');
+const {MetroSerializer} = require('@rnx-kit/metro-serializer');
 
-/**
- * Metro configuration
- * https://facebook.github.io/metro/docs/configuration
- *
- * @type {import('metro-config').MetroConfig}
- */
-const config = {};
+const [msalPath, msalExcludePattern] = resolveUniqueModule('react-is');
+const additionalExclusions = [msalExcludePattern];
+const blockList = exclusionList(additionalExclusions);
 
-module.exports = mergeConfig(getDefaultConfig(__dirname), config);
+module.exports = makeMetroConfig({
+  resolver: {
+    resolveRequest: MetroSymlinksResolver(),
+    extraNodeModules: {
+      'react-is': msalPath,
+    },
+    blockList,
+  },
+  serializer: {
+    experimentalSerializerHook: TypeScriptPlugin(),
+    customSerializer: MetroSerializer([DuplicateDependencies()]),
+  },
+});
